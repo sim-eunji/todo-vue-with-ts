@@ -8,8 +8,8 @@ const routes: RouteConfig[] = [
   {
     path: '/:status?',
     name: 'item-list',
-    component: itemList
-  }
+    component: itemList,
+  },
 ];
 
 const router = new VueRouter({

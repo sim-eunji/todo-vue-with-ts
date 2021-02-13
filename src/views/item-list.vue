@@ -24,26 +24,31 @@ import { mapGetters } from "vuex";
   }
 })
 export default class ItemList extends Vue {
-  renderList: any[] = [];
+  public renderList: any[] = [];
 
-  created() {
-    this.initRenderList(this.$route.params.status);
+  public created() {
+    this.$store.dispatch("initData");
   }
 
-  initRenderList(status: "active" | "clear") {
-    if (!status) this.renderList = this.allTodoList;
-    else if (status === "active") this.renderList = this.activeTodoList;
-    else if (status === "clear") this.renderList = this.clearTodoList;
+  public initRenderList(status: "active" | "clear") {
+    if (!status) {
+      this.renderList = this.allTodoList;
+    } else if (status === "active") {
+      this.renderList = this.activeTodoList;
+    } else if (status === "clear") {
+      this.renderList = this.clearTodoList;
+    }
   }
 
   @Watch("$route.params.status")
-  routeUpdate(newValue: "active" | "clear") {
+  public routeUpdate(newValue: "active" | "clear") {
     this.initRenderList(newValue);
   }
 
   @Watch("$store.state.todoList", { deep: true })
-  stateUpdate() {
-    this.initRenderList(this.$route.params.status);
+  public stateUpdate() {
+    const status: "active" | "clear" = this.$route.params.status;
+    this.initRenderList(status);
   }
 }
 </script>
