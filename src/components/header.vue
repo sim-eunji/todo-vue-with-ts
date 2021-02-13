@@ -3,13 +3,13 @@
     <h1>TODO LIST</h1>
     <ol class="breadcrumb">
       <li class="breadcrumb-item">
-        <a href="#">All</a>
+        <router-link to="/">All</router-link>
       </li>
       <li class="breadcrumb-item">
-        <a href="#">Active</a>
+        <router-link to="/active">Active</router-link>
       </li>
       <li class="breadcrumb-item">
-        <a href="#">Clear</a>
+        <router-link to="/clear">Clear</router-link>
       </li>
     </ol>
   </div>
